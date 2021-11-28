@@ -1,0 +1,56 @@
+<%= form_with(model: old, local: true) do |form| %>
+  <% if old.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(old.errors.count, "error") %> prohibited this old from being saved:</h2>
+
+      <ul>
+      <% old.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :name %>
+    <%= form.text_field :name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :company %>
+    <%= form.text_field :company %>
+  </div>
+
+  <div class="field">
+    <%= form.label :price %>
+    <%= form.number_field :price %>
+  </div>
+
+  <div class="field">
+    <%= form.label :modal %>
+    <%= form.number_field :modal %>
+  </div>
+
+  <div class="field">
+    <%= form.label :seat %>
+    <%= form.number_field :seat %>
+  </div>
+
+  <div class="field">
+    <%= form.label :owner %>
+    <%= form.number_field :owner %>
+  </div>
+
+  <div class="field">
+    <%= form.label :desc %>
+    <%= form.text_field :desc %>
+  </div>
+  <div class="field">
+    <%= form.label :image %>
+    <%= form.file_field :image%>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

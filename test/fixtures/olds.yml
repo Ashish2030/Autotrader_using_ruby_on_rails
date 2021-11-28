@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  company: MyString
+  price: 1
+  modal: 1
+  seat: 1
+  owner: 1
+  desc: MyString
+
+two:
+  name: MyString
+  company: MyString
+  price: 1
+  modal: 1
+  seat: 1
+  owner: 1
+  desc: MyString

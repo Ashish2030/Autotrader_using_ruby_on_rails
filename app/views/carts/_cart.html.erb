@@ -1,0 +1,24 @@
+<% unless @cart.line_items.empty? %>
+  <h2 style="margin-top: 6rem"> Your cart</h2>
+  <table>
+    <%= render(@cart.line_items) %>
+    <tr>
+      <td>
+        Total
+      </td>
+      <td>
+        <%= number_to_currency(@cart.total_price) %>
+      </td>
+    </tr>
+  </table>
+  <% session[:amount] = @cart.total_price %>
+  <%= link_to "Empty Cart", cart_path, :method => :delete, :confirm => "Are you sure?" %>
+  <p>
+    <% link_to "Continue Shopping", :controller => "gallery", :action => "index" %>
+    <%  if user_signed_in? %>
+      <%= link_to "Checkout", :controller => "gallery",:action => "checkout" %>
+    <%else  %>
+      <%= link_to "Checkout", new_user_session_path %>
+    <%end  %>
+  </p>
+<% end %>

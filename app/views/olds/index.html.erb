@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <style>
+      .bg-cover {
+          background-size: cover !important;
+      }
+
+
+      .body1 {
+          min-height: 100vh;
+      }
+      body {
+          background: #f4f4f4;
+      }
+
+      .banner {
+          background: #a770ef;
+          background: -webkit-linear-gradient(to right, #a770ef, #cf8bf3, #fdb99b);
+          background: linear-gradient(to right, #a770ef, #cf8bf3, #fdb99b);
+      }
+  </style>
+  <title>Autotrader</title>
+  <link rel="shortcut icon" href="m1.jpg" width="1000px">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+</head>
+<body>
+<body class="body1">
+  <div style="background: url(<%= asset_path 'a.jpg' %>);" class="jumbotron bg-cover text-white" >
+  <div class="container py-5 text-center">
+    <h1 class="display-4 font-weight-bold">Used cars for sell</h1>
+    <p class="font-italic mb-0">Used car for sell</p>
+    <p class="font-italic">made by
+      <a href="#" class="text-white">
+        <u>Autotrader</u>
+      </a>
+    </p>
+  </div>
+</div>
+</body>
+<p id="notice"><%= notice %></p>
+<div class="container-fluid">
+  <div class="px-lg-5">
+    <div class="row">
+      <% @olds.each do |old| %>
+      <!-- Gallery item -->
+      <div class="col-xl-3 col-lg-4 col-md-6 mb-4">
+        <div class="bg-white rounded shadow-sm"><img src="image411.jpg" alt="" class="img-fluid card-img-top">
+          <div class="p-4">
+            <h5> <a href="#" class="text-dark">Used <%= old.modal %> <%= old.company %> <%= old.name %></a></h5>
+            <h8 class="font-weight-bold my-2">$ <%= old.price %></h8>
+            <p class="small text-muted mb-0"><%= old.desc %></p><br>
+            <div class="container-fluid">
+              <div class="row">
+                <div class="col-sm-3"><%= link_to 'Show', old ,:class =>"btn btn-primary btn-sm"%></div>
+                <div class="col-sm-3"><%= link_to 'Edit', edit_old_path(old),:class =>"btn btn-primary btn-sm" %></div>
+                <div class="col-sm-3"><%= link_to 'Destroy', old,:class =>"btn btn-primary btn-sm", method: :delete, data: { confirm: 'Are you sure?' } %></div>
+                <div class="col-sm-3"><a href="payment.html"><button type="button" class="btn btn-primary btn-sm">Payment</button></a></div>
+              </div>
+            </div>
+            <div class="d-flex align-items-center justify-content-between rounded-pill bg-light px-3 py-2 mt-4">
+              <p class="small mb-0"><i class="fa fa-picture-o mr-2"></i><span class="font-weight-bold">JPEG</span></p>
+              <div class="badge badge-success px-3 rounded-pill font-weight-normal">Hot</div>
+            </div>
+          </div>
+          <div class="extra content">
+            <%= link_to line_items_url(:old_id => old.id), :method => :post do %>
+              <div class="ui fluid labeled button" tabindex="0">
+                <div class="ui red fluid button">
+                  <i class="cart arrow down icon"></i> Add To Cart
+                </div>
+              </div>
+            <% end %>
+          </div>
+        </div>
+      </div>
+
+      <% end %>
+      <!-- End -->
+    </div>
+    <div class="py-5 text-right"><a href="#" class="btn btn-dark px-5 py-3 text-uppercase">Show me more</a></div>
+  </div>
+</div>
+</body>
+</html>
+

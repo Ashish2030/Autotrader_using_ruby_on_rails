@@ -1,0 +1,56 @@
+<div class="div ui  container" style="margin-top: 6rem">
+  <%= session[:amount] %>
+  <%= form_with local: true do |form| %>
+    <div class="ui form">
+      <h4 class="ui dividing header">Check out</h4>
+      <div class="field">
+        <%= form.label :first_name %>
+        <div class="two fields">
+          <div class="field">
+            <%= form.text_field :first_name, placeholder:'First Name' %>
+          </div>
+          <div class="field">
+            <%= form.text_field :last_name, placeholder:'Last Name' %>
+          </div>
+        </div>
+      </div>
+      <h4 class="ui dividing header">Billing Information</h4>
+      <div class="fields">
+        <div class="seven wide field">
+          <%= form.label :number %>
+          <%= form.text_field :number, placeholder:'Card #', maxlength:"16" %>
+        </div>
+        <div class="three wide field">
+          <%= form.label :CVC %>
+          <%= form.text_field :verification_value, maxLength:"3", placeholder:"CVC" %>
+        </div>
+        <div class="six wide field">
+          <%= form.label :Expiration %>
+          <div class="two fields">
+            <div class="field">
+              <select class="ui fluid search dropdown" name="month">
+                <option value="">Month</option>
+                <option value="1">January</option>
+                <option value="2">February</option>
+                <option value="3">March</option>
+                <option value="4">April</option>
+                <option value="5">May</option>
+                <option value="6">June</option>
+                <option value="7">July</option>
+                <option value="8">August</option>
+                <option value="9">September</option>
+                <option value="10">October</option>
+                <option value="11">November</option>
+                <option value="12">December</option>
+              </select>
+            </div>
+            <div class="field">
+              <%= form.text_field :year, placeholder:'Year', maxLength:"4" %>
+            </div>
+          </div>
+        </div>
+      </div>
+      <%= form.submit "Submit Order", class:"ui button" %>
+    </div>
+  <%end %>
+</div>

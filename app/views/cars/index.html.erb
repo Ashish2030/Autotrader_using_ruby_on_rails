@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <style>
+      .bg-cover {
+          background-size: cover !important;
+      }
+
+
+      .body1 {
+          min-height: 100vh;
+      }
+      .button5 {border-radius: 50%;}
+      body {
+          background: #00b09b;
+          background: -webkit-linear-gradient(to right, #00b09b, #96c93d);
+          background: linear-gradient(to right, #00b09b, #96c93d);
+          min-height: 100vh;
+      }
+
+      .text-gray {
+          color: #aaa;
+      }
+      .card {
+          box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+          max-width: 300px;
+          margin: auto;
+          text-align: center;
+          font-family: arial;
+      }
+
+      .price {
+          color: grey;
+          font-size: 22px;
+      }
+
+      .card button {
+          border: none;
+          outline: 0;
+          padding: 12px;
+          color: white;
+          background-color: #000;
+          text-align: center;
+          cursor: pointer;
+          width: 100%;
+          font-size: 18px;
+      }
+
+      .card button:hover {
+          opacity: 0.7;
+      }
+  </style>
+  <title>Autotrader</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+</head>
+<body>
+<!-- NAVBAR-->
+
+<body class="body1">
+<div style="background: url(<%= asset_path 'image412.jpg' %>)" class="jumbotron bg-cover text-white">
+  <div class="container py-5 text-center">
+    <h1 class="display-4 font-weight-bold">New cars for sell</h1>
+    <p class="font-italic mb-0">Used car for sell</p>
+    <p class="font-italic">made by
+      <a href="#" class="text-white">
+        <u>Autotrader</u>
+      </a>
+    </p>
+  </div>
+</div>
+</body>
+<div class="container py-5">
+  <p id="notice"><%= notice %></p>
+  <div class="row">
+    <div class="col-lg-8 mx-auto">
+      <!-- List group-->
+      <ul class="list-group shadow">
+
+        <% @cars.each do |car| %>
+        <!-- list group item -->
+        <li class="list-group-item">
+          <!-- Custom content-->
+
+          <div class="media align-items-lg-center flex-column flex-lg-row p-3">
+            <div class="media-body order-2 order-lg-1">
+              <h5 class="mt-0 font-weight-bold mb-2"><%= car.name %></h5>
+              <p class="font-italic text-muted mb-0 small"><%= car.desc %></p>
+              <div class="d-flex align-items-center justify-content-between mt-1">
+                <h6 class="font-weight-bold my-2"><%= car.price %></h6>
+                <div class="container-fluid">
+                  <div class="row">
+                    <div class="col-sm-3"><%= link_to 'Show', car ,:class =>"btn btn-primary btn-sm"%></div>
+                    <div class="col-sm-3"><%= link_to 'Edit ', edit_car_path(car),:class =>"btn btn-primary btn-sm" %></div>
+                    <div class="col-sm-3"><%= link_to 'Destroy',car,:class =>"btn btn-primary btn-sm", method: :delete, data: { confirm: 'Are you sure?' } %></div>
+                    <div class="col-sm-3">
+                      <a href="/autotrader/payment">
+                        <button type="button" class="btn btn-primary btn-sm">Payment</button></a></div>
+                  </div>
+                </div>
+                <ul class="list-inline small">
+                  <li class="list-inline-item m-0"><i class="fa fa-star text-success"></i></li>
+                  <li class="list-inline-item m-0"><i class="fa fa-star text-success"></i></li>
+                  <li class="list-inline-item m-0"><i class="fa fa-star text-success"></i></li>
+                  <li class="list-inline-item m-0"><i class="fa fa-star text-success"></i></li>
+                  <li class="list-inline-item m-0"><i class="fa fa-star-o text-gray"></i></li>
+                </ul>
+              </div>
+            </div>
+            <%= image_tag("image103.jpg", width: '200' ,class:"ml-lg-5 order-1 order-lg-2")%>
+          </div>
+
+
+
+          <!-- End -->
+        </li>
+        <% end %>
+        <!-- End -->
+      </ul>
+      <!-- End -->
+
+    </div>
+
+  </div>
+</div>
+
+</body>
+</html>
+
+
+

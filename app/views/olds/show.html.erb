@@ -1,0 +1,44 @@
+<p id="notice"><%= notice %></p>
+
+
+<p>
+  <strong>Image:</strong>
+  <%= image_tag(@old.image, style: 'height:50%; width:50%;') if @old.image.attached? %></div>
+</p>
+<p>
+  <strong>Name:</strong>
+  <%= @old.name %>
+</p>
+
+<p>
+  <strong>Company:</strong>
+  <%= @old.company %>
+</p>
+
+<p>
+  <strong>Price:</strong>
+  <%= @old.price %>
+</p>
+
+<p>
+  <strong>Modal:</strong>
+  <%= @old.modal %>
+</p>
+
+<p>
+  <strong>Seat:</strong>
+  <%= @old.seat %>
+</p>
+
+<p>
+  <strong>Owner:</strong>
+  <%= @old.owner %>
+</p>
+
+<p>
+  <strong>Desc:</strong>
+  <%= @old.desc %>
+</p>
+
+<%= link_to 'Edit', edit_old_path(@old) %> |
+<%= link_to 'Back', olds_path %>

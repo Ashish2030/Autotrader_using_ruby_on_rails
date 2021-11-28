@@ -1,0 +1,164 @@
+
+
+
+
+
+<%#= render "devise/shared/links" %>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <style>
+      .border-md {
+          border-width: 2px;
+      }
+
+      .btn-facebook {
+          background: #405D9D;
+          border: none;
+      }
+
+      .btn-facebook:hover, .btn-facebook:focus {
+          background: #314879;
+      }
+
+      .btn-twitter {
+          background: #42AEEC;
+          border: none;
+      }
+
+      .btn-twitter:hover, .btn-twitter:focus {
+          background: #1799e4;
+      }
+
+
+  </style>
+  <title>Autotrader</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+</head>
+<body>
+<header class="header">
+  <nav class="navbar navbar-expand-lg navbar-light py-3">
+    <div class="container">
+      <!-- Navbar Brand -->
+      <a href="#" class="navbar-brand">
+        <img src="http://velikorodnov.com/html/autotrader/images/logo.png" alt="Logo" style="width:120px;">
+      </a>
+    </div>
+  </nav>
+</header>
+
+
+<div class="container">
+  <div class="row py-5 mt-4 align-items-center">
+    <!-- For Demo Purpose -->
+    <div class="col-md-5 pr-lg-5 mb-5 mb-md-0">
+      <img src="https://res.cloudinary.com/mhmd/image/upload/v1569543678/form_d9sh6m.svg" alt="" class="img-fluid mb-3 d-none d-md-block">
+      <h1>Create an Account</h1>
+      <p class="font-italic text-muted mb-0">Create your Own account.</p>
+      </p>
+    </div>
+
+    <!-- Registeration Form -->
+    <div class="col-md-7 col-lg-6 ml-auto">
+      <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+        <%= render "devise/shared/error_messages", resource: resource %>
+        <div class="row">
+
+          <!-- First Name -->
+          <div class="input-group col-lg-6 mb-4">
+            <div class="input-group-prepend">
+                            <span class="input-group-text bg-white px-4 border-md border-right-0">
+                                <i class="fa fa-user text-muted"></i>
+                            </span>
+            </div>
+            <%=f.text_field :first_name ,:class =>"form-control bg-white border-left-0 border-md ", autofocus: true, placeholder: 'First Name'%>
+          </div>
+
+          <!-- Last Name -->
+          <div class="input-group col-lg-6 mb-4">
+            <div class="input-group-prepend">
+                            <span class="input-group-text bg-white px-4 border-md border-right-0">
+                                <i class="fa fa-user text-muted"></i>
+                            </span>
+            </div>
+            <%=f.text_field :last_name ,:class =>"form-control bg-white border-left-0 border-md ", autofocus: true, placeholder: 'Last Name'%>
+          </div>
+
+          <!-- Email Address -->
+          <div class="input-group col-lg-12 mb-4">
+            <div class="input-group-prepend">
+                            <span class="input-group-text bg-white px-4 border-md border-right-0">
+                                <i class="fa fa-envelope text-muted"></i>
+                            </span>
+            </div>
+            <%= f.email_field :email, autofocus: true, autocomplete: "email",:class =>"form-control bg-white border-left-0 border-md ", autofocus: true, placeholder: 'Email' %>
+          </div>
+
+          <!-- Phone Number -->
+          <div class="input-group col-lg-12 mb-4">
+            <div class="input-group-prepend">
+                            <span class="input-group-text bg-white px-4 border-md border-right-0">
+                                <i class="fa fa-phone-square text-muted"></i>
+                            </span>
+            </div>
+            <select id="countryCode" name="countryCode" style="max-width: 80px" class="custom-select form-control bg-white border-left-0 border-md h-100 font-weight-bold text-muted">
+              <option value="">+91</option>
+              <option value="">+10</option>
+              <option value="">+15</option>
+              <option value="">+18</option>
+            </select>
+            <%=f.number_field :mobile,:class =>"form-control bg-white border-md border-left-0 pl-3", autofocus: true, placeholder: 'Last Name'%>
+          </div>
+          <!-- Password -->
+          <div class="input-group col-lg-6 mb-4">
+            <%= f.password_field :password, autocomplete: "new-password",:class =>"form-control bg-white border-left-0 border-md",placeholder:"Password"%>
+          </div>
+
+          <!-- Password Confirmation -->
+          <div class="input-group col-lg-6 mb-4">
+
+            <%= f.password_field :password_confirmation, autocomplete: "new-password" ,:class =>"form-control bg-white border-left-0 border-md",placeholder:"Confirm Password"%>
+
+          </div>
+
+
+
+
+
+
+          <!-- Submit Button -->
+          <div class="form-group col-lg-12 mx-auto mb-0">
+              <span class="font-weight-bold">
+                 <%= f.submit " Create your account",:class =>"btn btn-primary btn-block py-2" %>
+              </span>
+          </div>
+
+          <!-- Divider Text -->
+          <div class="form-group col-lg-12 mx-auto d-flex align-items-center my-4">
+            <div class="border-bottom w-100 ml-5"></div>
+            <span class="px-2 small text-muted font-weight-bold text-muted">OR</span>
+            <div class="border-bottom w-100 mr-5"></div>
+          </div>
+
+
+
+          <!-- Already Registered -->
+          <div class="text-center w-100">
+            <p class="text-muted font-weight-bold">Already Registered? <%= link_to "Login", new_user_session_path, :class=>"text-primary ml-2"  %></p>
+          </div>
+
+        </div>
+      <% end %>
+
+    </div>
+  </div>
+</div>
+
+</body>
+</html>
+
